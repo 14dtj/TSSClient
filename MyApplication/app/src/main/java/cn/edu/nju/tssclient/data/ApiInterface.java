@@ -2,6 +2,7 @@ package cn.edu.nju.tssclient.data;
 
 import java.util.List;
 
+import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
 import cn.edu.nju.tssclient.data.model.SimpleUser;
 import cn.edu.nju.tssclient.data.model.User;
@@ -28,4 +29,13 @@ public interface ApiInterface {
 
     @GET("group/{groupId}/students")
     Observable<List<User>> getStudents(@Header("Authorization") String token, @Path("groupId") int groupId);
+
+    @GET("course/{courseId}/exam")
+    Observable<List<Exam>> getExams(@Header("Authorization") String token, @Path("courseId") int courseId);
+
+    @GET("course/{courseId}/homework")
+    Observable<List<Exam>> getHomework(@Header("Authorization") String token, @Path("courseId") int courseId);
+
+    @GET("course/{courseId}/exercise")
+    Observable<List<Exam>> getExercise(@Header("Authorization") String token, @Path("courseId") int courseId);
 }

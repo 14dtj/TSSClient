@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
 import cn.edu.nju.tssclient.data.model.User;
 import rx.Observable;
@@ -34,6 +35,18 @@ public class TeacherRepository extends BaseRepository {
 
     public Observable<List<User>> getStudents(String username, String password, int groupId) {
         return apiService.getStudents(getToken(username, password), groupId);
+    }
+
+    public Observable<List<Exam>> getExams(String username, String password, int courseId) {
+        return apiService.getExams(getToken(username, password), courseId);
+    }
+
+    public Observable<List<Exam>> getHomework(String username, String password, int courseId) {
+        return apiService.getHomework(getToken(username, password), courseId);
+    }
+
+    public Observable<List<Exam>> getExercise(String username, String password, int courseId) {
+        return apiService.getExercise(getToken(username, password), courseId);
     }
 
     private String getToken(String username, String password) {

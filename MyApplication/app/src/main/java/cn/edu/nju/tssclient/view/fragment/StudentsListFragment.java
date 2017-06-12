@@ -36,21 +36,13 @@ public class StudentsListFragment extends BaseFragment implements BasicListView 
     ListView listView;
     @Inject
     StudentListPresenter presenter;
-    private View view;
-    private UserInfoActivity activity;
     private List<Map<String, Object>> studentMap;
     private int groupNum;
     private int callCount;
 
     @Override
     public void showError() {
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(activity, R.string.network_error, Toast.LENGTH_LONG).show();
-            }
-        };
-        activity.runOnUiThread(myRunnable);
+        baseError();
     }
 
     @Override

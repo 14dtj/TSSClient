@@ -2,9 +2,15 @@ package cn.edu.nju.tssclient.injector;
 
 import cn.edu.nju.tssclient.data.TeacherRepository;
 import cn.edu.nju.tssclient.data.UserRepository;
+import cn.edu.nju.tssclient.presenter.ExamListPresenter;
+import cn.edu.nju.tssclient.presenter.ExerciseListPresenter;
+import cn.edu.nju.tssclient.presenter.HomeListPresenter;
 import cn.edu.nju.tssclient.presenter.MainPresenter;
 import cn.edu.nju.tssclient.presenter.StudentListPresenter;
 import cn.edu.nju.tssclient.view.MainActivity;
+import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
+import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
+import cn.edu.nju.tssclient.view.fragment.HomeworkListFragment;
 import cn.edu.nju.tssclient.view.fragment.StudentsListFragment;
 import dagger.Module;
 import dagger.Provides;
@@ -16,6 +22,9 @@ import dagger.Provides;
 public class MainModule {
     private MainActivity activity;
     private StudentsListFragment fragment;
+    private ExamListFragment examListFragment;
+    private ExerciseListFragment exerciseListFragment;
+    private HomeworkListFragment homeworkListFragment;
 
     public MainModule(MainActivity activity) {
         this.activity = activity;
@@ -23,6 +32,18 @@ public class MainModule {
 
     public MainModule(StudentsListFragment fragment) {
         this.fragment = fragment;
+    }
+
+    public MainModule(ExamListFragment fragment) {
+        this.examListFragment = fragment;
+    }
+
+    public MainModule(ExerciseListFragment fragment) {
+        this.exerciseListFragment = fragment;
+    }
+
+    public MainModule(HomeworkListFragment fragment) {
+        this.homeworkListFragment = fragment;
     }
 
     @Provides
@@ -51,7 +72,38 @@ public class MainModule {
     }
 
     @Provides
+    public ExerciseListFragment provideExerciseListFragment() {
+        return exerciseListFragment;
+    }
+
+    @Provides
+    public ExamListFragment provideExamListFragment() {
+        return examListFragment;
+    }
+
+    @Provides
+    public HomeworkListFragment provideHomeListFragment() {
+        return homeworkListFragment;
+    }
+
+    @Provides
     public StudentListPresenter getStuListPresenter(StudentsListFragment fragment, TeacherRepository repository) {
         return new StudentListPresenter(fragment, repository);
     }
+
+    @Provides
+    public ExamListPresenter getExamListPresenter(ExamListFragment fragment, TeacherRepository repository) {
+        return new ExamListPresenter(fragment, repository);
+    }
+
+    @Provides
+    public ExerciseListPresenter getExerciseListPresenter(ExerciseListFragment fragment, TeacherRepository repository) {
+        return new ExerciseListPresenter(fragment, repository);
+    }
+
+    @Provides
+    public HomeListPresenter getHomeListPresenter(HomeworkListFragment fragment, TeacherRepository repository) {
+        return new HomeListPresenter(fragment, repository);
+    }
+
 }

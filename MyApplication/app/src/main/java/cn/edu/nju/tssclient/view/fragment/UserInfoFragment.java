@@ -22,7 +22,7 @@ public class UserInfoFragment extends BaseFragment {
     ImageView avatar;
     @BindView(R.id.username)
     TextView username;
-    @BindView(R.id.name)
+    @BindView(R.id.exam_title)
     TextView name;
     @BindView(R.id.gender)
     TextView gender;

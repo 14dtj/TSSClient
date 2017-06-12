@@ -47,7 +47,7 @@ public class StudentListPresenter implements BasePresenter<BasicListView> {
     }
 
     public void getStudents(String username, String password, int groupId) {
-        repository.getStudents(username, password, groupId)
+        subscription = repository.getStudents(username, password, groupId)
                 .subscribeOn(Schedulers.io())
                 .onErrorReturn(new Func1<Throwable, List<User>>() {
                     @Override
