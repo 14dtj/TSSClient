@@ -1,6 +1,7 @@
 package cn.edu.nju.tssclient.injector;
 
 import cn.edu.nju.tssclient.view.MainActivity;
+import cn.edu.nju.tssclient.view.fragment.StudentsListFragment;
 import dagger.Component;
 
 /**
@@ -9,4 +10,6 @@ import dagger.Component;
 @Component(modules = MainModule.class)
 public interface ActivityComponent {
     void inject(MainActivity activity);
+
+    void inject(StudentsListFragment fragment);
 }

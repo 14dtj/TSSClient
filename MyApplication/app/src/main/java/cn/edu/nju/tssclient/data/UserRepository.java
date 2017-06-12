@@ -1,44 +1,32 @@
 package cn.edu.nju.tssclient.data;
 
-import android.os.AsyncTask;
-
-import java.io.IOException;
-
 import cn.edu.nju.tssclient.data.model.SimpleUser;
 import cn.edu.nju.tssclient.data.model.User;
-import retrofit2.Call;
-import retrofit2.Response;
+import rx.Observable;
 
 /**
  * Created by tjDu on 2017/5/31.
  */
 
-public class UserRepository extends AsyncTask<String, Integer, User> {
-    private ApiInterface apiService;
+public class UserRepository extends BaseRepository {
+    private static UserRepository instance;
 
-    public UserRepository() {
-        apiService = ApiClient.getClient().create(ApiInterface.class);
+    public static UserRepository getInstance() {
+        if (instance == null)
+            instance = new UserRepository();
+        return instance;
     }
 
-    @Override
-    protected User doInBackground(String... params) {
-        return getUserInfo(params[0], params[1]);
+    private UserRepository() {
+        super();
     }
 
-    private User getUserInfo(String username, String password) {
+    public Observable<User> getUserInfo(String username, String password) {
         SimpleUser su = new SimpleUser();
         su.setPassword(password);
         su.setUsername(username);
-        Call<User> call = apiService.getUserInfo(su);
-        User result = null;
-        Response<User> response;
-        try {
-            response = call.execute();
-            result = response.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return result;
+        Observable<User> call = apiService.getUserInfo(su);
+        return call;
     }
 
 }

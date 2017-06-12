@@ -20,6 +20,7 @@ import cn.edu.nju.tssclient.presenter.MainPresenter;
 import cn.edu.nju.tssclient.view.contract.BasicView;
 
 public class MainActivity extends AppCompatActivity implements BasicView {
+    public static final String TAG = "MainActivity";
     @BindView(R.id.username)
     TextView username;
     @BindView(R.id.password)
@@ -28,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements BasicView {
     Button button;
     @Inject
     MainPresenter presenter;
-    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,37 @@ public class MainActivity extends AppCompatActivity implements BasicView {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user = presenter.login(username.getText().toString(), password.getText().toString());
-               // changeView();
+                presenter.login(username.getText().toString(), password.getText().toString());
             }
         });
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.onStop();
     }
 
     @Override
     public void showError() {
-        Toast.makeText(this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, R.string.login_error, Toast.LENGTH_LONG).show();
+            }
+        };
+        runOnUiThread(myRunnable);
     }
 
-
-    private void changeView() {
-        Intent intent = new Intent(this, UserInfoActivity.class);
+    @Override
+    public void changeView(User user, String password) {
+        Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("user", user);
         intent.putExtras(bundle);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
+
 }
