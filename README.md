@@ -1,2 +1,2 @@
 # TSSClient
-Teaching support system using retrofit, mvp, dagger.
+Teaching support system using Retrofit, MVP, Dagger2,RxJava,Butterknife.
