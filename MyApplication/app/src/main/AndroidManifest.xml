@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".view.UserInfoActivity"></activity>
         <activity android:name=".view.HomeworkActivity"></activity>
+        <activity android:name=".view.QuestionActivity"></activity>
     </application>
 
 </manifest>

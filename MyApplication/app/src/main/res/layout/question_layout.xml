@@ -12,7 +12,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/homework_id"
+        android:id="@+id/question_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -26,43 +26,31 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/start"
+        android:id="@+id/difficulty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/end"
+        android:id="@+id/git_url"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/status"
+        android:id="@+id/type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="24sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
     <TextView
-        android:id="@+id/questions"
+        android:id="@+id/creator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="问题列表"
+        android:text="TextView"
         android:textSize="24sp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="10dp" />
-
-    <ListView
-        android:id="@+id/question_list"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

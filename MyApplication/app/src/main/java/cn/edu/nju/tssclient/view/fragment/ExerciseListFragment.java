@@ -1,9 +1,11 @@
 package cn.edu.nju.tssclient.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -21,6 +23,7 @@ import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.injector.DaggerActivityComponent;
 import cn.edu.nju.tssclient.injector.MainModule;
 import cn.edu.nju.tssclient.presenter.ExerciseListPresenter;
+import cn.edu.nju.tssclient.view.HomeworkActivity;
 import cn.edu.nju.tssclient.view.UserInfoActivity;
 import cn.edu.nju.tssclient.view.contract.ExamListView;
 
@@ -35,6 +38,7 @@ public class ExerciseListFragment extends BaseFragment implements ExamListView {
     @Inject
     ExerciseListPresenter presenter;
     protected List<Map<String, Object>> examMap;
+    private List<Exam> exams;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +68,7 @@ public class ExerciseListFragment extends BaseFragment implements ExamListView {
 
     @Override
     public void showList(List<Exam> list) {
+        this.exams = list;
         for (Exam exam : list) {
             Map<String, Object> map = new HashMap<>();
             map.put("title", exam.getTitle());
@@ -80,6 +85,17 @@ public class ExerciseListFragment extends BaseFragment implements ExamListView {
                 int[] to = {R.id.exam_title, R.id.description, R.id.start, R.id.end, R.id.status};
                 SimpleAdapter adapter = new SimpleAdapter(view.getContext(), examMap, R.layout.short_exam_info, from, to);
                 listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(view.getContext(), HomeworkActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("exam", exams.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
             }
         };
         activity.runOnUiThread(myRunnable);
