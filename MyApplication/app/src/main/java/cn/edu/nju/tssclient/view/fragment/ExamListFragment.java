@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 
 import java.util.ArrayList;
@@ -35,10 +36,13 @@ import cn.edu.nju.tssclient.view.contract.ExamListView;
 public class ExamListFragment extends BaseFragment implements ExamListView {
     @BindView(R.id.exam_list)
     ListView listView;
+    @BindView(R.id.search_view)
+    SearchView searchView;
     @Inject
     ExamListPresenter presenter;
     protected List<Map<String, Object>> examMap;
     private List<Exam> exams;
+    private SimpleAdapter adapter;
 
     @Override
     public void showError() {
@@ -56,6 +60,24 @@ public class ExamListFragment extends BaseFragment implements ExamListView {
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                examMap.clear();
+                for (Exam exam : exams) {
+                    if (exam.getTitle().contains(newText)) {
+                        putData(exam);
+                    }
+                }
+                adapter.notifyDataSetChanged();
+                return true;
+            }
+        });
         presenter.getExams(username, password, 1);
         return view;
     }
@@ -83,7 +105,7 @@ public class ExamListFragment extends BaseFragment implements ExamListView {
             public void run() {
                 String[] from = {"title", "description", "start", "end", "status"};
                 int[] to = {R.id.exam_title, R.id.description, R.id.start, R.id.end, R.id.status};
-                SimpleAdapter adapter = new SimpleAdapter(view.getContext(), examMap, R.layout.short_exam_info, from, to);
+                adapter = new SimpleAdapter(view.getContext(), examMap, R.layout.short_exam_info, from, to);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -98,5 +120,15 @@ public class ExamListFragment extends BaseFragment implements ExamListView {
             }
         };
         activity.runOnUiThread(myRunnable);
+    }
+
+    private void putData(Exam exam) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("title", exam.getTitle());
+        map.put("description", exam.getDescription());
+        map.put("start", "开始时间：" + exam.getStartAt());
+        map.put("end", "结束时间：" + exam.getEndAt());
+        map.put("status", "状态：" + exam.getStatus());
+        examMap.add(map);
     }
 }

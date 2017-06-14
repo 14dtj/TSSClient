@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import butterknife.BindView;
@@ -32,7 +33,6 @@ public class UserInfoFragment extends BaseFragment {
     TextView gitId;
     @BindView(R.id.number)
     TextView number;
-
     private User user;
 
     public void setUser(User user) {

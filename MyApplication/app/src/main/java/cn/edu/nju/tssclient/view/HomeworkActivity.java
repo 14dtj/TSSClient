@@ -1,6 +1,9 @@
 package cn.edu.nju.tssclient.view;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +22,12 @@ import butterknife.ButterKnife;
 import cn.edu.nju.tssclient.R;
 import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Question;
+import cn.edu.nju.tssclient.view.fragment.LineChartFragment;
+import lecho.lib.hellocharts.gesture.ContainerScrollType;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
 
 /**
  * Created by tjDu on 2017/6/12.
@@ -44,10 +53,15 @@ public class HomeworkActivity extends AppCompatActivity {
     @BindView(R.id.status)
     TextView status;
 
+    private String username;
+    private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = this.getIntent();
+        username = intent.getStringExtra("username");
+        password = intent.getStringExtra("password");
         exam = (Exam) intent.getSerializableExtra("exam");
         questionList = exam.getQuestions();
         setContentView(R.layout.homework_layout);
@@ -59,6 +73,7 @@ public class HomeworkActivity extends AppCompatActivity {
         end.setText("结束日期：" + exam.getEndAt());
         status.setText("状态：" + exam.getStatus());
         showList();
+        setLineChart();
     }
 
     private void showList() {
@@ -84,5 +99,14 @@ public class HomeworkActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void setLineChart() {
+        FragmentManager fm = this.getFragmentManager();
+        FragmentTransaction transaction = fm.beginTransaction();
+        LineChartFragment fragment = new LineChartFragment();
+        fragment.setUserInfo(username, password);
+        transaction.replace(R.id.fragment_chart, fragment);
+        transaction.commit();
     }
 }
