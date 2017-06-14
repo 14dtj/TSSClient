@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
+import cn.edu.nju.tssclient.data.model.Score;
 import cn.edu.nju.tssclient.data.model.SimpleUser;
 import cn.edu.nju.tssclient.data.model.User;
 import retrofit2.Call;
@@ -38,4 +39,7 @@ public interface ApiInterface {
 
     @GET("course/{courseId}/exercise")
     Observable<List<Exam>> getExercise(@Header("Authorization") String token, @Path("courseId") int courseId);
+
+    @GET("assignment/{assignmentId}/score")
+    Observable<Score> getScore(@Header("Authorization") String token, @Path("assignmentId") int assignmentId);
 }

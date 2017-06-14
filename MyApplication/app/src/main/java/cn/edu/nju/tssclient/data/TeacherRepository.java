@@ -8,6 +8,7 @@ import java.util.List;
 
 import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
+import cn.edu.nju.tssclient.data.model.Score;
 import cn.edu.nju.tssclient.data.model.User;
 import rx.Observable;
 import retrofit2.Call;
@@ -47,6 +48,10 @@ public class TeacherRepository extends BaseRepository {
 
     public Observable<List<Exam>> getExercise(String username, String password, int courseId) {
         return apiService.getExercise(getToken(username, password), courseId);
+    }
+
+    public Observable<Score> getScore(String username, String password, int assignmentId) {
+        return apiService.getScore(getToken(username, password), assignmentId);
     }
 
     private String getToken(String username, String password) {

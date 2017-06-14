@@ -6,11 +6,13 @@ import cn.edu.nju.tssclient.presenter.ExamListPresenter;
 import cn.edu.nju.tssclient.presenter.ExerciseListPresenter;
 import cn.edu.nju.tssclient.presenter.HomeListPresenter;
 import cn.edu.nju.tssclient.presenter.MainPresenter;
+import cn.edu.nju.tssclient.presenter.ScorePresenter;
 import cn.edu.nju.tssclient.presenter.StudentListPresenter;
 import cn.edu.nju.tssclient.view.MainActivity;
 import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
 import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
 import cn.edu.nju.tssclient.view.fragment.HomeworkListFragment;
+import cn.edu.nju.tssclient.view.fragment.LineChartFragment;
 import cn.edu.nju.tssclient.view.fragment.StudentsListFragment;
 import dagger.Module;
 import dagger.Provides;
@@ -25,6 +27,7 @@ public class MainModule {
     private ExamListFragment examListFragment;
     private ExerciseListFragment exerciseListFragment;
     private HomeworkListFragment homeworkListFragment;
+    private LineChartFragment lineChartFragment;
 
     public MainModule(MainActivity activity) {
         this.activity = activity;
@@ -44,6 +47,10 @@ public class MainModule {
 
     public MainModule(HomeworkListFragment fragment) {
         this.homeworkListFragment = fragment;
+    }
+
+    public MainModule(LineChartFragment fragment) {
+        this.lineChartFragment = fragment;
     }
 
     @Provides
@@ -87,6 +94,11 @@ public class MainModule {
     }
 
     @Provides
+    public LineChartFragment provideLineChartFragment() {
+        return lineChartFragment;
+    }
+
+    @Provides
     public StudentListPresenter getStuListPresenter(StudentsListFragment fragment, TeacherRepository repository) {
         return new StudentListPresenter(fragment, repository);
     }
@@ -104,6 +116,11 @@ public class MainModule {
     @Provides
     public HomeListPresenter getHomeListPresenter(HomeworkListFragment fragment, TeacherRepository repository) {
         return new HomeListPresenter(fragment, repository);
+    }
+
+    @Provides
+    public ScorePresenter getScorePresenter(LineChartFragment fragment, TeacherRepository repository) {
+        return new ScorePresenter(repository, fragment);
     }
 
 }

@@ -55,6 +55,7 @@ public class HomeworkActivity extends AppCompatActivity {
 
     private String username;
     private String password;
+    private int assignmentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class HomeworkActivity extends AppCompatActivity {
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
         exam = (Exam) intent.getSerializableExtra("exam");
+        assignmentId = exam.getId();
         questionList = exam.getQuestions();
         setContentView(R.layout.homework_layout);
         ButterKnife.bind(this);
@@ -105,7 +107,7 @@ public class HomeworkActivity extends AppCompatActivity {
         FragmentManager fm = this.getFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
         LineChartFragment fragment = new LineChartFragment();
-        fragment.setUserInfo(username, password);
+        fragment.setUserInfo(username, password, assignmentId);
         transaction.replace(R.id.fragment_chart, fragment);
         transaction.commit();
     }

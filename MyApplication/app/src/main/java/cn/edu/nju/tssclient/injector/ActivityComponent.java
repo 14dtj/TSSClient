@@ -4,6 +4,7 @@ import cn.edu.nju.tssclient.view.MainActivity;
 import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
 import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
 import cn.edu.nju.tssclient.view.fragment.HomeworkListFragment;
+import cn.edu.nju.tssclient.view.fragment.LineChartFragment;
 import cn.edu.nju.tssclient.view.fragment.StudentsListFragment;
 import dagger.Component;
 
@@ -21,4 +22,6 @@ public interface ActivityComponent {
     void inject(ExerciseListFragment fragment);
 
     void inject(HomeworkListFragment fragment);
+
+    void inject(LineChartFragment fragment);
 }
