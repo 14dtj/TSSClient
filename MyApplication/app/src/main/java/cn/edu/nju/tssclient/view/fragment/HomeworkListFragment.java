@@ -112,6 +112,8 @@ public class HomeworkListFragment extends BaseFragment implements ExamListView {
                         intent.putExtras(bundle);
                         intent.putExtra("username", username);
                         intent.putExtra("password", password);
+                        intent.putExtra("type", type);
+                        intent.putExtra("userId", userId);
                         startActivity(intent);
                     }
                 });

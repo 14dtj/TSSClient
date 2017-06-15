@@ -20,6 +20,8 @@
         <activity android:name=".view.UserInfoActivity"></activity>
         <activity android:name=".view.HomeworkActivity"></activity>
         <activity android:name=".view.QuestionActivity"></activity>
+        <activity android:name=".view.TestMetricActivity"></activity>
+        <activity android:name=".view.AnalysisActivity"></activity>
     </application>
 
 </manifest>

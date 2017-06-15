@@ -1,13 +1,16 @@
 package cn.edu.nju.tssclient.injector;
 
+import cn.edu.nju.tssclient.data.StudentRepository;
 import cn.edu.nju.tssclient.data.TeacherRepository;
 import cn.edu.nju.tssclient.data.UserRepository;
+import cn.edu.nju.tssclient.presenter.AnalysisPresenter;
 import cn.edu.nju.tssclient.presenter.ExamListPresenter;
 import cn.edu.nju.tssclient.presenter.ExerciseListPresenter;
 import cn.edu.nju.tssclient.presenter.HomeListPresenter;
 import cn.edu.nju.tssclient.presenter.MainPresenter;
 import cn.edu.nju.tssclient.presenter.ScorePresenter;
 import cn.edu.nju.tssclient.presenter.StudentListPresenter;
+import cn.edu.nju.tssclient.view.AnalysisActivity;
 import cn.edu.nju.tssclient.view.MainActivity;
 import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
 import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
@@ -28,6 +31,7 @@ public class MainModule {
     private ExerciseListFragment exerciseListFragment;
     private HomeworkListFragment homeworkListFragment;
     private LineChartFragment lineChartFragment;
+    private AnalysisActivity analysisActivity;
 
     public MainModule(MainActivity activity) {
         this.activity = activity;
@@ -53,9 +57,18 @@ public class MainModule {
         this.lineChartFragment = fragment;
     }
 
+    public MainModule(AnalysisActivity activity) {
+        this.analysisActivity = activity;
+    }
+
     @Provides
     public MainActivity provideActivity() {
         return activity;
+    }
+
+    @Provides
+    public AnalysisActivity provideAnalysisActivity() {
+        return analysisActivity;
     }
 
     @Provides
@@ -76,6 +89,11 @@ public class MainModule {
     @Provides
     public TeacherRepository provideTeacherRepository() {
         return TeacherRepository.getInstance();
+    }
+
+    @Provides
+    public StudentRepository provideStudentRepository() {
+        return StudentRepository.getInstance();
     }
 
     @Provides
@@ -122,5 +140,11 @@ public class MainModule {
     public ScorePresenter getScorePresenter(LineChartFragment fragment, TeacherRepository repository) {
         return new ScorePresenter(repository, fragment);
     }
+
+    @Provides
+    public AnalysisPresenter getAnalysisPresenter(AnalysisActivity activity, StudentRepository repository) {
+        return new AnalysisPresenter(repository, activity);
+    }
+
 
 }

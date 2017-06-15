@@ -14,12 +14,16 @@ import cn.edu.nju.tssclient.view.UserInfoActivity;
 public class BaseFragment extends Fragment {
     protected String username;
     protected String password;
+    protected String type;
+    protected int userId;
     protected UserInfoActivity activity;
     protected View view;
 
-    public void setUserInfo(String username, String password) {
+    public void setUserInfo(String username, String password, String type, int userId) {
         this.username = username;
         this.password = password;
+        this.type = type;
+        this.userId = userId;
     }
 
     public void baseError() {

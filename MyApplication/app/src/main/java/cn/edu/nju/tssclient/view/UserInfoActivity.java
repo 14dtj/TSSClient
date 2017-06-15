@@ -52,14 +52,20 @@ public class UserInfoActivity extends AppCompatActivity implements BottomNavigat
     private void initNavigation() {
         switch (user.getType()) {
             case "student":
+                bottomNavigationBar
+                        .addItem(new BottomNavigationItem(R.drawable.user, "个人"))
+                        .addItem(new BottomNavigationItem(R.drawable.exam, "考试"))
+                        .addItem(new BottomNavigationItem(R.drawable.homework, "作业"))
+                        .addItem(new BottomNavigationItem(R.drawable.exercise, "练习"))
+                        .initialise();
                 break;
             case "teacher":
                 bottomNavigationBar
                         .addItem(new BottomNavigationItem(R.drawable.user, "个人"))
                         .addItem(new BottomNavigationItem(R.drawable.exam, "考试"))
-                        .addItem(new BottomNavigationItem(R.drawable.student, "学生"))
                         .addItem(new BottomNavigationItem(R.drawable.homework, "作业"))
                         .addItem(new BottomNavigationItem(R.drawable.exercise, "练习"))
+                        .addItem(new BottomNavigationItem(R.drawable.student, "学生"))
                         .initialise();
                 break;
             case "admin":
@@ -81,16 +87,16 @@ public class UserInfoActivity extends AppCompatActivity implements BottomNavigat
                 fragment = new ExamListFragment();
                 break;
             case 2:
-                fragment = new StudentsListFragment();
-                break;
-            case 3:
                 fragment = new HomeworkListFragment();
                 break;
-            case 4:
+            case 3:
                 fragment = new ExerciseListFragment();
                 break;
+            case 4:
+                fragment = new StudentsListFragment();
+                break;
         }
-        fragment.setUserInfo(user.getUsername(), password);
+        fragment.setUserInfo(user.getUsername(), password, user.getType(), user.getId());
         transaction.replace(R.id.fragment_content, fragment);
         transaction.commit();
     }

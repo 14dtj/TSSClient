@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -52,10 +53,14 @@ public class HomeworkActivity extends AppCompatActivity {
     TextView end;
     @BindView(R.id.status)
     TextView status;
+    @BindView(R.id.check_analysis)
+    Button button;
 
     private String username;
     private String password;
     private int assignmentId;
+    private int userId;
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +68,8 @@ public class HomeworkActivity extends AppCompatActivity {
         Intent intent = this.getIntent();
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
+        userId = intent.getIntExtra("userId", 0);
+        type = intent.getStringExtra("type");
         exam = (Exam) intent.getSerializableExtra("exam");
         assignmentId = exam.getId();
         questionList = exam.getQuestions();
@@ -74,6 +81,7 @@ public class HomeworkActivity extends AppCompatActivity {
         start.setText("开始日期：" + exam.getStartAt());
         end.setText("结束日期：" + exam.getEndAt());
         status.setText("状态：" + exam.getStatus());
+        checkAnalysis();
         showList();
         setLineChart();
     }
@@ -110,5 +118,23 @@ public class HomeworkActivity extends AppCompatActivity {
         fragment.setUserInfo(username, password, assignmentId);
         transaction.replace(R.id.fragment_chart, fragment);
         transaction.commit();
+    }
+
+    private void checkAnalysis() {
+        if (!type.equals("student")) {
+            button.setVisibility(View.GONE);
+            return;
+        }
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), AnalysisActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("password", password);
+                intent.putExtra("assignmentId", assignmentId);
+                intent.putExtra("userId", userId);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -114,6 +114,10 @@ public class ExamListFragment extends BaseFragment implements ExamListView {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("exam", exams.get(position));
                         intent.putExtras(bundle);
+                        intent.putExtra("username", username);
+                        intent.putExtra("password", password);
+                        intent.putExtra("type", type);
+                        intent.putExtra("userId", userId);
                         startActivity(intent);
                     }
                 });

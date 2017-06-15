@@ -2,6 +2,7 @@ package cn.edu.nju.tssclient.data;
 
 import java.util.List;
 
+import cn.edu.nju.tssclient.data.model.Analysis;
 import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
 import cn.edu.nju.tssclient.data.model.Score;
@@ -42,4 +43,8 @@ public interface ApiInterface {
 
     @GET("assignment/{assignmentId}/score")
     Observable<Score> getScore(@Header("Authorization") String token, @Path("assignmentId") int assignmentId);
+
+    @GET("assignment/{assignmentId}/student/{studentId}/analysis")
+    Observable<Analysis> getAnalysis(@Header("Authorization") String token, @Path("assignmentId") int assignmentId,
+                                     @Path("studentId") int studentId);
 }
