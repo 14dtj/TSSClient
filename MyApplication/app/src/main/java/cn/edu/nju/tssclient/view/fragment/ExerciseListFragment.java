@@ -73,7 +73,7 @@ public class ExerciseListFragment extends BaseFragment implements ExamListView {
                 return true;
             }
         });
-        presenter.getExercise(username, password, 1);
+        presenter.getExercise(username, password, courseId);
         return view;
     }
 

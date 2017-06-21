@@ -23,6 +23,12 @@
         android:textSize="18sp" />
 
     <TextView
+        android:id="@+id/readme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp" />
+
+    <TextView
         android:id="@+id/compile_succeeded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

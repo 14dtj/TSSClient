@@ -78,7 +78,7 @@ public class ExamListFragment extends BaseFragment implements ExamListView {
                 return true;
             }
         });
-        presenter.getExams(username, password, 1);
+        presenter.getExams(username, password, courseId);
         return view;
     }
 

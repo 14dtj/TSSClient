@@ -2,6 +2,7 @@ package cn.edu.nju.tssclient.injector;
 
 import cn.edu.nju.tssclient.view.AnalysisActivity;
 import cn.edu.nju.tssclient.view.MainActivity;
+import cn.edu.nju.tssclient.view.TestMetricActivity;
 import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
 import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
 import cn.edu.nju.tssclient.view.fragment.HomeworkListFragment;
@@ -27,4 +28,6 @@ public interface ActivityComponent {
     void inject(LineChartFragment fragment);
 
     void inject(AnalysisActivity activity);
+
+    void inject(TestMetricActivity activity);
 }

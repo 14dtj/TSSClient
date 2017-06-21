@@ -5,6 +5,7 @@ import java.util.List;
 import cn.edu.nju.tssclient.data.model.Analysis;
 import cn.edu.nju.tssclient.data.model.Exam;
 import cn.edu.nju.tssclient.data.model.Group;
+import cn.edu.nju.tssclient.data.model.Readme;
 import cn.edu.nju.tssclient.data.model.Score;
 import cn.edu.nju.tssclient.data.model.SimpleUser;
 import cn.edu.nju.tssclient.data.model.User;
@@ -47,4 +48,8 @@ public interface ApiInterface {
     @GET("assignment/{assignmentId}/student/{studentId}/analysis")
     Observable<Analysis> getAnalysis(@Header("Authorization") String token, @Path("assignmentId") int assignmentId,
                                      @Path("studentId") int studentId);
+
+    @GET("assignment/{assignmentId}/student/{studentId}/question/{questionId}")
+    Observable<Readme> getReadme(@Header("Authorization") String token, @Path("assignmentId") int assignmentId,
+                                 @Path("studentId") int studentId, @Path("questionId") int questionId);
 }

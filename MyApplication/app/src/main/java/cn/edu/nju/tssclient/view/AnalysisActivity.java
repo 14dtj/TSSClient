@@ -23,6 +23,7 @@ import cn.edu.nju.tssclient.injector.DaggerActivityComponent;
 import cn.edu.nju.tssclient.injector.MainModule;
 import cn.edu.nju.tssclient.presenter.AnalysisPresenter;
 import cn.edu.nju.tssclient.view.contract.ResultListView;
+import cn.edu.nju.tssclient.view.util.ReadmeParams;
 
 /**
  * Created by tjDu on 2017/6/14.
@@ -73,19 +74,26 @@ public class AnalysisActivity extends AppCompatActivity implements ResultListVie
             map.put("score", "得分：" + item.getScoreResult().getScore());
             resultMap.add(map);
         }
-        String[] from = {"title", "score"};
-        int[] to = {R.id.title, R.id.content};
-        SimpleAdapter adapter = new SimpleAdapter(this, resultMap, R.layout.short_student_info, from, to);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Runnable myRunnable = new Runnable() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(view.getContext(), TestMetricActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("questionResult", questionResults.get(position));
-                intent.putExtras(bundle);
-                startActivity(intent);
+            public void run() {
+                String[] from = {"title", "score"};
+                int[] to = {R.id.title, R.id.content};
+                SimpleAdapter adapter = new SimpleAdapter(AnalysisActivity.this, resultMap, R.layout.short_student_info, from, to);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(view.getContext(), TestMetricActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("questionResult", questionResults.get(position));
+                        bundle.putSerializable("readmeParams", new ReadmeParams(username, password, assignmentId, userId));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
+                });
             }
-        });
+        };
+        runOnUiThread(myRunnable);
     }
 }

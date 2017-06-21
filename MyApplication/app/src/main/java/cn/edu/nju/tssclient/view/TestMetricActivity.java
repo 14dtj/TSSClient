@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.edu.nju.tssclient.R;
@@ -22,18 +24,25 @@ import cn.edu.nju.tssclient.data.model.QuestionResult;
 import cn.edu.nju.tssclient.data.model.ScoreResult;
 import cn.edu.nju.tssclient.data.model.TestResult;
 import cn.edu.nju.tssclient.data.model.Testcase;
+import cn.edu.nju.tssclient.injector.DaggerActivityComponent;
+import cn.edu.nju.tssclient.injector.MainModule;
+import cn.edu.nju.tssclient.presenter.ReadmePresenter;
+import cn.edu.nju.tssclient.view.contract.ContentView;
+import cn.edu.nju.tssclient.view.util.ReadmeParams;
 
 /**
  * Created by tjDu on 2017/6/14.
  */
 
-public class TestMetricActivity extends AppCompatActivity {
+public class TestMetricActivity extends AppCompatActivity implements ContentView {
     @BindView(R.id.question_title)
     TextView title;
     @BindView(R.id.score)
     TextView score;
     @BindView(R.id.git_url)
     TextView gitUrl;
+    @BindView(R.id.readme)
+    TextView readme;
     @BindView(R.id.compile_succeeded)
     TextView compile;
     @BindView(R.id.total_line_count)
@@ -54,32 +63,41 @@ public class TestMetricActivity extends AppCompatActivity {
     private ScoreResult scoreResult;
     private TestResult testResult;
     private QuestionResult questionResult;
-
+    private ReadmeParams readmeParams;
+    @Inject
+    ReadmePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = this.getIntent();
         questionResult = (QuestionResult) intent.getSerializableExtra("questionResult");
+        readmeParams = (ReadmeParams) intent.getSerializableExtra("readmeParams");
+        readmeParams.questionId = questionResult.getQuestionId();
         metricData = questionResult.getMetricData();
         scoreResult = questionResult.getScoreResult();
         testResult = questionResult.getTestResult();
         setContentView(R.layout.test_metric);
         ButterKnife.bind(this);
+        DaggerActivityComponent.builder()
+                .mainModule(new MainModule(this))
+                .build()
+                .inject(this);
         setInfo();
         showList();
+        presenter.getReadme(readmeParams);
     }
 
     private void setInfo() {
-        title.setText(questionResult.getQuestionTitle());
-        score.setText(scoreResult.getScore() + "");
-        gitUrl.setText(metricData.getGitUrl());
-        compile.setText(testResult.isCompileSucceed() + "");
-        totalCount.setText(metricData.getTotalLineCount()+"");
-        commentCount.setText(metricData.getCommentLineCount()+"");
-        fieldCount.setText(metricData.getFieldCount()+"");
-        methodCount.setText(metricData.getMethodCount()+"");
-        maxCoc.setText(metricData.getMaxCoc()+"");
+        title.setText("问题名称：" + questionResult.getQuestionTitle());
+        score.setText("分数：" + scoreResult.getScore() + "");
+        gitUrl.setText("git url：" + metricData.getGitUrl());
+        compile.setText("编译通过：" + testResult.isCompileSucceed() + "");
+        totalCount.setText("总行数：" + metricData.getTotalLineCount() + "");
+        commentCount.setText("注释行数：" + metricData.getCommentLineCount() + "");
+        fieldCount.setText("变量个数：" + metricData.getFieldCount() + "");
+        methodCount.setText("方法个数：" + metricData.getMethodCount() + "");
+        maxCoc.setText("圈复杂度：" + metricData.getMaxCoc() + "");
     }
 
     private void showList() {
@@ -95,5 +113,15 @@ public class TestMetricActivity extends AppCompatActivity {
         int[] to = {R.id.title, R.id.content};
         SimpleAdapter adapter = new SimpleAdapter(this, testMap, R.layout.short_student_info, from, to);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void showContent(String str) {
+        readme.setText(str);
     }
 }

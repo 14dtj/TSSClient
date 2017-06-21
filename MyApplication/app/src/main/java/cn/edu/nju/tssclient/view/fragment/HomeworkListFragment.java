@@ -74,7 +74,7 @@ public class HomeworkListFragment extends BaseFragment implements ExamListView {
                 return true;
             }
         });
-        presenter.getHomework(username, password, 1);
+        presenter.getHomework(username, password, courseId);
         return view;
     }
 

@@ -51,7 +51,7 @@ public class TeacherRepository extends BaseRepository {
     }
 
     public Observable<Score> getScore(String username, String password, int assignmentId) {
-        return apiService.getScore(getToken(username, password), assignmentId);
+        return apiService.getScore(getToken(username, password), 38);
     }
 
     private String getToken(String username, String password) {

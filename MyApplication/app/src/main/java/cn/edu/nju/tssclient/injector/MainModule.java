@@ -8,10 +8,12 @@ import cn.edu.nju.tssclient.presenter.ExamListPresenter;
 import cn.edu.nju.tssclient.presenter.ExerciseListPresenter;
 import cn.edu.nju.tssclient.presenter.HomeListPresenter;
 import cn.edu.nju.tssclient.presenter.MainPresenter;
+import cn.edu.nju.tssclient.presenter.ReadmePresenter;
 import cn.edu.nju.tssclient.presenter.ScorePresenter;
 import cn.edu.nju.tssclient.presenter.StudentListPresenter;
 import cn.edu.nju.tssclient.view.AnalysisActivity;
 import cn.edu.nju.tssclient.view.MainActivity;
+import cn.edu.nju.tssclient.view.TestMetricActivity;
 import cn.edu.nju.tssclient.view.fragment.ExamListFragment;
 import cn.edu.nju.tssclient.view.fragment.ExerciseListFragment;
 import cn.edu.nju.tssclient.view.fragment.HomeworkListFragment;
@@ -32,6 +34,7 @@ public class MainModule {
     private HomeworkListFragment homeworkListFragment;
     private LineChartFragment lineChartFragment;
     private AnalysisActivity analysisActivity;
+    private TestMetricActivity testMetricActivity;
 
     public MainModule(MainActivity activity) {
         this.activity = activity;
@@ -61,6 +64,10 @@ public class MainModule {
         this.analysisActivity = activity;
     }
 
+    public MainModule(TestMetricActivity activity) {
+        this.testMetricActivity = activity;
+    }
+
     @Provides
     public MainActivity provideActivity() {
         return activity;
@@ -69,6 +76,11 @@ public class MainModule {
     @Provides
     public AnalysisActivity provideAnalysisActivity() {
         return analysisActivity;
+    }
+
+    @Provides
+    public TestMetricActivity provideTestActivity() {
+        return testMetricActivity;
     }
 
     @Provides
@@ -147,4 +159,8 @@ public class MainModule {
     }
 
 
+    @Provides
+    public ReadmePresenter getReadmePresenter(TestMetricActivity activity,StudentRepository repository){
+        return new ReadmePresenter(repository,activity);
+    }
 }

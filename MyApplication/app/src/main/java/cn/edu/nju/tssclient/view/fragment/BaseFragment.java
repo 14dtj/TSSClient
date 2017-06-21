@@ -18,6 +18,7 @@ public class BaseFragment extends Fragment {
     protected int userId;
     protected UserInfoActivity activity;
     protected View view;
+    protected int courseId = 2;
 
     public void setUserInfo(String username, String password, String type, int userId) {
         this.username = username;
