@@ -121,7 +121,13 @@ public class TestMetricActivity extends AppCompatActivity implements ContentView
     }
 
     @Override
-    public void showContent(String str) {
-        readme.setText(str);
+    public void showContent(final String str) {
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                readme.setText("readme:" + str);
+            }
+        };
+        runOnUiThread(myRunnable);
     }
 }

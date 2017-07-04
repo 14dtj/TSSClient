@@ -68,6 +68,7 @@ public class ScorePresenter implements BasePresenter<MyLineChartView> {
                             for (int i = 0; i < scoreRange.length - 1; i++)
                                 values.add(new PointValue(i, data[i]));
                             Line line = new Line(values).setColor(colors[++color]).setCubic(true);
+                            System.out.println();
                             lines.add(line);
 
                         }

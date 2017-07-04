@@ -25,7 +25,7 @@ public class StudentRepository extends BaseRepository {
     }
 
     public Observable<Analysis> getAnalysis(String username, String password, int assignmentId, int studentId) {
-        return apiService.getAnalysis(getToken(username, password), assignmentId, studentId);
+        return apiService.getAnalysis(getToken(username, password), 38, 256);
     }
 
     public Observable<Readme> getReadme(ReadmeParams params) {

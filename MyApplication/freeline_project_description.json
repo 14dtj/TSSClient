@@ -1,0 +1,128 @@
+{
+    "project_type": "gradle",
+    "android_gradle_plugin_version": "2.3.2",
+    "freeline_gradle_plugin_version": "0.8.7",
+    "java_home": "C:\\Program Files\\Java\\jdk1.8.0_131",
+    "freeline_cache_dir": "D:\\projects\\TSSClient\\MyApplication",
+    "auto_dependency": true,
+    "product_flavor": "",
+    "build_script": "gradlew.bat :app:assembleDebug",
+    "build_script_work_directory": "",
+    "root_dir": "D:\\projects\\TSSClient\\MyApplication",
+    "main_project_name": "app",
+    "main_project_dir": "app",
+    "build_directory": "D:\\projects\\TSSClient\\MyApplication\\app\\build",
+    "build_cache_dir": "D:\\projects\\TSSClient\\MyApplication\\app\\build\\freeline",
+    "build_tools_version": "25.0.0",
+    "sdk_directory": "C:\\Users\\tjDu\\AppData\\Local\\Android\\Sdk",
+    "build_tools_directory": "C:\\Users\\tjDu\\AppData\\Local\\Android\\Sdk\\build-tools\\25.0.0",
+    "compile_sdk_version": "android-24",
+    "compile_sdk_directory": "C:\\Users\\tjDu\\AppData\\Local\\Android\\Sdk\\platforms\\android-24",
+    "package": "cn.edu.nju.tssclient",
+    "debug_package": "cn.edu.nju.tssclient",
+    "main_manifest_path": "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\AndroidManifest.xml",
+    "launcher": "cn.edu.nju.tssclient.view.MainActivity",
+    "apk_path": "D:\\projects\\TSSClient\\MyApplication\\app\\build\\outputs\\apk\\app-debug.apk",
+    "extra_dep_res_paths": [
+        
+    ],
+    "exclude_dep_res_paths": [
+        
+    ],
+    "main_r_path": "D:\\projects\\TSSClient\\MyApplication\\app\\build\\generated\\source\\r\\debug\\R.java",
+    "use_jdk8": true,
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "use_system_gradle": false,
+    "check_sources_md5": [
+        
+    ],
+    "main_src_directory": [
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\java",
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\java"
+    ],
+    "main_res_directory": [
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\res",
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\res"
+    ],
+    "main_assets_directory": [
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\assets",
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\assets"
+    ],
+    "main_jni_directory": [
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\jni",
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\jni"
+    ],
+    "main_jniLibs_directory": [
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\jniLibs",
+        "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\jniLibs"
+    ],
+    "project_source_sets": {
+        "app": {
+            "main_src_directory": [
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\java",
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\java"
+            ],
+            "main_res_directory": [
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\res",
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\res"
+            ],
+            "main_assets_directory": [
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\assets",
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\assets"
+            ],
+            "main_jni_directory": [
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\jni",
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\jni"
+            ],
+            "main_jniLibs_directory": [
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\debug\\jniLibs",
+                "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\jniLibs"
+            ],
+            "main_manifest_path": "D:\\projects\\TSSClient\\MyApplication\\app\\src\\main\\AndroidManifest.xml"
+        }
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "D:\\projects\\TSSClient\\MyApplication\\app"
+        }
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "databinding": [
+        
+    ],
+    "databinding_modules": [
+        
+    ],
+    "apt": {
+        "app": {
+            "enabled": true,
+            "disableDiscovery": false,
+            "aptOutput": "D:\\projects\\TSSClient\\MyApplication\\app\\build\\generated\\source\\apt\\debug",
+            "processorPath": "C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit2\\converter-gson\\2.1.0\\aa557d71ead91cbf26e0c316a0f593d168303309\\converter-gson-2.1.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.code.gson\\gson\\2.7\\751f548c85fa49f330cecbb1875893f971b33c4e\\gson-2.7.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit2\\adapter-rxjava\\2.1.0\\693eddc23e87ab13f9cf5001707ce8e7e1d1ff01\\adapter-rxjava-2.1.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.retrofit2\\retrofit\\2.1.0\\2de7cd8b95b7021b1d597f049bcb422055119f2c\\retrofit-2.1.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okhttp3\\okhttp\\3.3.0\\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\\okhttp-3.3.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup.okio\\okio\\1.8.0\\5ea7af56cc7c567ed9856d99efb30740e9b17ff\\okio-1.8.0.jar;C:\\Users\\tjDu\\.android\\build-cache\\8db00d215ba13aef2e56776bdc53bf6e1793f4a2\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.jakewharton\\butterknife-annotations\\8.4.0\\ea392375cf9ff59234a82e7928a204215ccc98cd\\butterknife-annotations-8.4.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.dagger\\dagger\\2.4\\6b290a792253035c9fcc912d6a4d7efb3e850211\\dagger-2.4.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\javax.inject\\javax.inject\\1\\6975da39a7040257bd51d21a231b76c915872d38\\javax.inject-1.jar;C:\\Users\\tjDu\\.android\\build-cache\\3478a5b6ba5a96f59ca9d58936a22924eb5d5fe4\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\io.reactivex\\rxjava-joins\\0.22.0\\658135e52e01650a74c276c6e61df276a5247da7\\rxjava-joins-0.22.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\io.reactivex\\rxjava\\1.1.5\\ece7b5d0870e66d8226dab6dcf47a2b12afff061\\rxjava-1.1.5.jar;C:\\Users\\tjDu\\.android\\build-cache\\8d2a8ea30ed01743a005534031e3bb3b2750121d\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\596a905103b199a8cc641ace0678d5cbd4a6fa24\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\cc4ade804c093b7c9eb17e3783e869b2a7bd0951\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\c7b27ca4b362894794f34095ab50e8db308c0065\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\22ef6517ebc36ddfce4606e2c6f19bb859371637\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\22ef6517ebc36ddfce4606e2c6f19bb859371637\\output\\jars\\libs\\internal_impl-24.2.1.jar;C:\\Users\\tjDu\\.android\\build-cache\\6a96fd06488f983f87b187bc2588420155f23e87\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\6a96fd06488f983f87b187bc2588420155f23e87\\output\\jars\\libs\\internal_impl-24.2.1.jar;C:\\Users\\tjDu\\.android\\build-cache\\20f4a65a3fba613d4ffed4ea5eb821180ad61517\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\20f4a65a3fba613d4ffed4ea5eb821180ad61517\\output\\jars\\libs\\internal_impl-24.2.1.jar;C:\\Users\\tjDu\\.android\\build-cache\\e822150093973a4b3512dc56832962bb199db47b\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\2e2f3d5d4f4b367adefc0838d62cde744845637a\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\a80e0f1d080499b4ad48973bd73a58ba6c494090\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\a80e0f1d080499b4ad48973bd73a58ba6c494090\\output\\jars\\libs\\internal_impl-24.2.1.jar;C:\\Users\\tjDu\\.android\\build-cache\\4def840f2e9d77be759c80511faf391032761677\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\ce3144cd8e859fd2d2e27276b84e3394e1cb299a\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\ce3144cd8e859fd2d2e27276b84e3394e1cb299a\\output\\jars\\libs\\internal_impl-24.2.1.jar;C:\\Users\\tjDu\\AppData\\Local\\Android\\Sdk\\extras\\android\\m2repository\\com\\android\\support\\support-annotations\\24.2.1\\support-annotations-24.2.1.jar;C:\\Users\\tjDu\\.android\\build-cache\\d0862dcc260975ede8ebc02fa960ea1a6a00336f\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.android\\build-cache\\6682f874f6d920e035ddcd77d01189ad232c2627\\output\\jars\\classes.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.jakewharton\\butterknife-compiler\\8.4.0\\22f40cd3f01849c6deeab0a755d2082b2624581\\butterknife-compiler-8.4.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.dagger\\dagger-compiler\\2.4\\1053c9ef441e93088c9261c33163f6af30766b7\\dagger-compiler-2.4.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.auto\\auto-common\\0.6\\cf7212b0f8bfef12657b942df8f4f2cf032d3f41\\auto-common-0.6.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.auto.service\\auto-service\\1.0-rc2\\51033a5b8fcf7039159e35b6878f106ccd5fb35f\\auto-service-1.0-rc2.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.squareup\\javapoet\\1.7.0\\4fdcf1fc27c1a8f55d1109df986c923152f07759\\javapoet-1.7.0.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.dagger\\dagger-producers\\2.4\\f334a19afdc2ce2d8d5191f8a0fac2321bdd50fc\\dagger-producers-2.4.jar;C:\\Users\\tjDu\\.gradle\\caches\\modules-2\\files-2.1\\com.google.guava\\guava\\19.0\\6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9\\guava-19.0.jar;C:\\Users\\tjDu\\AppData\\Local\\Android\\Sdk\\extras\\android\\m2repository\\com\\android\\support\\support-annotations\\24.1.0\\support-annotations-24.1.0.jar",
+            "processor": null,
+            "aptArgs": [
+                
+            ]
+        }
+    },
+    "retrolambda": {
+        
+    },
+    "databinding_compiler_jar": "",
+    "apt_libraries": {
+        "dagger": true,
+        "butterknife": true
+    }
+}

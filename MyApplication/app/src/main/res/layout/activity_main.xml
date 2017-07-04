@@ -18,7 +18,7 @@
         android:layout_above="@+id/password"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:ems="10"
+        android:ems="8"
         android:hint="@string/username"
         android:inputType="textPersonName" />
 
